@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/tecnico-servicio")
 public class TecnicoController {
 

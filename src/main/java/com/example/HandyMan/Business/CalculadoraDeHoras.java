@@ -76,9 +76,9 @@ public class CalculadoraDeHoras {
         }
     }
 
-    public static int calculateHoursPerWeek(String idTecnico, int numSemana) throws Exception {
-        return tecnicoRepository.getTotalHoras(idTecnico, numSemana);
-    }
+//    public static int calculateHoursPerWeek(String idTecnico, int numSemana) throws Exception {
+//        return tecnicoRepository.getTotalHoras(idTecnico, numSemana);
+//    }
 
     public static int calculateExtraHours(){
         return  0;

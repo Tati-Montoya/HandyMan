@@ -10,5 +10,5 @@ public interface ITecnicoRepository {
 
     List postHorasTrabajadas(PostDataDto post) throws Exception;
 
-    int getTotalHoras(String idTecnico, int numSemana) throws Exception;
+   // int getTotalHoras(String idTecnico, int numSemana) throws Exception;
 }

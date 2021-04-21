@@ -11,11 +11,12 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class TecnicoRepositoryIMPL implements ITecnicoRepository{
+public class TecnicoRepositoryIMPL implements ITecnicoRepository {
 
     private final String consultarHoras =
             "SELECT TS.id_tecnico, S.num_semana, SUM(THT.horas_normales_extra) as horas_normales_extra, \n" +
             "SUM(THT.horas_dominicales) as horas_dominicales, SUM(THT.horas_nocturnas_extra) as horas_nocturnas_extra, \n" +
+            "SUM(THT.horas_normales) as horas_normales, SUM(THT.horas_nocturnas) as horas_nocturnas, \n" +
             "SUM(THT.horas_dominicales_extra) as horas_dominicales_extra, SUM(THT.total_horas) as total_horas\n" +
             "FROM \n" +
             "total_horas_trabajadas THT \n" +
@@ -77,7 +78,7 @@ public class TecnicoRepositoryIMPL implements ITecnicoRepository{
             query.setParameter("num_semana", numSemana);
 
             return query.getResultList();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("Error en el método getHorasTrabajadas: " + e);
         }
     }
@@ -102,21 +103,21 @@ public class TecnicoRepositoryIMPL implements ITecnicoRepository{
 
 //            return query.getResultList();
             return getHorasTrabajadas(post.getId_tecnico(), post.getNum_semana());
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("Error ejecutando consulta de post: " + e);
         }
     }
 
-    @Override
-    public int getTotalHoras(String idTecnico, int numSemana) throws Exception {
-        try {
-            Query query = em.createNativeQuery(totalHoraSemana);
-            query.setParameter("id_tecnico",idTecnico);
-            query.setParameter("num_semana",numSemana);
-
-            return query.getFirstResult();
-        }catch (Exception e){
-            throw new Exception("Error en metodo getTotalHoras: " + e);
-        }
-    }
+    //@Override
+//    public int getTotalHoras(String idTecnico, int numSemana) throws Exception {
+//        try {
+//            Query query = em.createNativeQuery(totalHoraSemana);
+//            query.setParameter("id_tecnico",idTecnico);
+//            query.setParameter("num_semana",numSemana);
+//
+//            return query.getFirstResult();
+//        }catch (Exception e){
+//            throw new Exception("Error en metodo getTotalHoras: " + e);
+//        }
+//    }
 }

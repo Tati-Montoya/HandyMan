@@ -37,10 +37,10 @@ public class TecnicoServiceIMPL implements ITecnicoService {
         post.setHoras_normales_extra(0);
         post.setHoras_nocturas_extra(0);
         post.setHoras_dominicales_extra(0);
-        int semana = CalculadoraDeHoras.calculateWeekOfYear(horaInicio);
-        post.setTotal_horas(CalculadoraDeHoras.calculateHoursPerWeek(idTecnico, semana));
-        post.setId_semana(0);
-
+        post.setTotal_horas(0);
+       // int semana = CalculadoraDeHoras.calculateWeekOfYear(horaInicio);
+        // post.setTotal_horas(CalculadoraDeHoras.calculateHoursPerWeek(idTecnico, semana));
+       // post.setId_semana(0);
         return tecnicoRepository.postHorasTrabajadas(post);
     }
 
