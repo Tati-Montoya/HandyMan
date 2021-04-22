@@ -31,10 +31,13 @@ public class TecnicoController {
     }
 
     @PostMapping("/guardar-horas")
-    public ResponseEntity postHoras(@RequestParam Date fechaInicio, @RequestParam Date fechaFin,
+    public ResponseEntity postHoras(@RequestParam String fechaInicio, @RequestParam String fechaFin,
                                     @RequestParam String idTecnico, @RequestParam String idServicio) throws Exception {
+        DateFormatter format = new DateFormatter();
+        Date fInicio = format.formatDate(fechaInicio);
+        Date fFin = format.formatDate(fechaFin);
 
-        var response = tecnicoServicio.postHorasTrabajadas(fechaInicio, fechaFin, idTecnico, idServicio);
+        var response = tecnicoServicio.postHorasTrabajadas(fInicio, fFin, idTecnico, idServicio);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
 //        if (response == null || response.isEmpty() || response.get(0) == null){
