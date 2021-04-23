@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Immutable
-public class ResponseDataDto implements Serializable {
+public class ResponseDataDTO implements Serializable {
     private static final long serialVersionUID = -3728772549794683965L;
 
     @Id

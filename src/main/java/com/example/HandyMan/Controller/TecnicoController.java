@@ -1,6 +1,8 @@
 package com.example.HandyMan.Controller;
 
-import com.example.HandyMan.DTO.ResponseDataDto;
+import com.example.HandyMan.Business.CalculadoraDeHoras;
+import com.example.HandyMan.DTO.RequestDataDTO;
+import com.example.HandyMan.DTO.ResponseDataDTO;
 import com.example.HandyMan.Service.ITecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/tecnico-servicio")
 public class TecnicoController {
 
@@ -24,27 +27,29 @@ public class TecnicoController {
         var response = tecnicoServicio.getHorasTrabajadas(idTecnico, numSemana);
 
         if (response == null || response.isEmpty() || response.get(0) == null) {
-            return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<ResponseDataDto>());
+            return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<ResponseDataDTO>());
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(response);
         }
     }
 
     @PostMapping("/guardar-horas")
-    public ResponseEntity postHoras(@RequestParam String fechaInicio, @RequestParam String fechaFin,
-                                    @RequestParam String idTecnico, @RequestParam String idServicio) throws Exception {
-        DateFormatter format = new DateFormatter();
-        Date fInicio = format.formatDate(fechaInicio);
-        Date fFin = format.formatDate(fechaFin);
+    public ResponseEntity postHoras(@RequestBody RequestDataDTO requestPost) throws Exception {
 
-        var response = tecnicoServicio.postHorasTrabajadas(fInicio, fFin, idTecnico, idServicio);
+        DateFormatter format = new DateFormatter();
+        Date fInicio = format.formatDate(requestPost.getHora_inicio());
+        Date fFin = format.formatDate(requestPost.getHora_fin());
+        int horasSemana = 0;
+
+        List totalHorasSemana = tecnicoServicio.getTotalHorasDeLaSemana(requestPost.getId_tecnico(), CalculadoraDeHoras.calculateWeekOfYear(fInicio));
+
+        if (totalHorasSemana.get(0) != null) {
+            horasSemana = Integer.parseInt(totalHorasSemana.get(0).toString());
+        }
+
+        var response = tecnicoServicio.postHorasTrabajadas(fInicio, fFin, requestPost.getId_tecnico(), requestPost.getId_servicio(), horasSemana);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
-//        if (response == null || response.isEmpty() || response.get(0) == null){
-//            return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<ResponseDataDto>());
-//        }else{
-//            return ResponseEntity.status(HttpStatus.OK).body(response);
-//        }
 
     }
 }

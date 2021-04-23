@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Immutable
-public class PostDataDto implements Serializable {
+public class PostDataDTO implements Serializable {
 
     private static final long serialVersionUID = -8832261300645389472L;
 
@@ -56,6 +56,9 @@ public class PostDataDto implements Serializable {
 
     @Column(name = "id_semana")
     private int id_semana;
+
+    @Column(name = "id_tipo_servicio")
+    private int id_tipo_servicio;
 
 
     public int getNum_semana() {
@@ -168,5 +171,13 @@ public class PostDataDto implements Serializable {
 
     public void setId_semana(int id_semana) {
         this.id_semana = id_semana;
+    }
+
+    public int getId_tipo_servicio() {
+        return id_tipo_servicio;
+    }
+
+    public void setId_tipo_servicio(int id_tipo_servicio) {
+        this.id_tipo_servicio = id_tipo_servicio;
     }
 }
