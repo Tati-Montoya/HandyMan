@@ -14,10 +14,6 @@ public class CalculadoraDeHoras {
         cal.setTime(date);
         return cal.get(Calendar.HOUR_OF_DAY);
     }
-    public static int calculateHour (Date date) {
-        cal.setTime(date);
-        return cal.get(Calendar.HOUR_OF_DAY);
-    }
 
     public static int calculateHourPerService(Date start, Date end) {
         if (extractHourForDate(end) > extractHourForDate(start)) {
@@ -27,8 +23,8 @@ public class CalculadoraDeHoras {
     }
 
     public static int calculateNightHour(Date start, Date end) {
-        int startHour = calculateHour(start);
-        int endHour = calculateHour(end);
+        int startHour = extractHourForDate(start);
+        int endHour = extractHourForDate(end);
 
         int startNight = 20;
         int endNigth = 7;
