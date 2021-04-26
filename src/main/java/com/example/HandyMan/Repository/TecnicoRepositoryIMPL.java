@@ -1,6 +1,5 @@
 package com.example.HandyMan.Repository;
 
-
 import com.example.HandyMan.DTO.PostDataDTO;
 import com.example.HandyMan.DTO.ResponseDataDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,76 +147,17 @@ public class TecnicoRepositoryIMPL implements ITecnicoRepository {
     @Modifying
     public List postHorasTrabajadas(PostDataDTO post) throws Exception {
         try {
-//            EntityTransaction et = em.getTransaction();
-//            et.begin();
             postServicio(post);
             postSemana(post);
             postDia(post);
             postTotal_horas_trabajadas(post);
             postTecnico_servicio(post);
-//            et.commit();
 
             return getTotalHorasDeLaSemana(post.getId_tecnico(), post.getNum_semana());
         } catch (Exception e) {
             throw new Exception("Error ejecutando consulta de post: " + e);
         }
     }
-
-//    @Override
-//    public List postHorasTrabajadas(PostDataDTO post) throws Exception {
-//        try {
-//            String postHoras =
-//                    "INSERT INTO servicio (id_tipo_servicio, id_servicio) \n" +
-//                            "VALUES ((SELECT MAX(id_tipo_servicio) FROM tipo_servicio) + 1, :id_servicio);\n" +
-//                            "INSERT INTO semana (num_semana) \n" +
-//                            "VALUES (:num_semana);\n" +
-//                            "INSERT INTO dia (num_dia_semana) \n" +
-//                            "VALUES (:num_dia_semana);\n" +
-//                            "INSERT INTO total_horas_trabajadas  \n" +
-//                            "(\n" +
-//                            "hora_inicio, hora_fin, horas_normales, horas_nocturnas,\n" +
-//                            "horas_dominicales, horas_normales_extra, horas_nocturnas_extra,\n" +
-//                            "horas_dominicales_extra, total_horas\n" +
-//                            ")\n" +
-//                            " VALUES\n" +
-//                            "(\n" +
-//                            ":hora_inicio,\n" +
-//                            ":hora_fin,\n" +
-//                            ":horas_normales,\n" +
-//                            ":horas_nocturnas,\n" +
-//                            ":horas_dominicales,\n" +
-//                            ":horas_normales_extra,\n" +
-//                            ":horas_nocturnas_extra,\n" +
-//                            ":horas_dominicales_extra,\n" +
-//                            ":total_horas\n" +
-//                            ");\n" +
-//                            "INSERT INTO tecnico_servicio (id_tecnico, id_servicio, id_semana) \n" +
-//                            "VALUES\n" +
-//                            "(\n" +
-//                            ":id_tecnico,\n" +
-//                            "(SELECT id_servicio FROM servicio ORDER by id_servicio ASC LIMIT 1),\n" +
-//                            "(SELECT MAX(id_semana)  FROM semana)\n" +
-//                            ")";
-//            Query query = em.createNativeQuery(postHoras);
-//            query.setParameter("id_servicio", post.getId_servicio());
-//            query.setParameter("num_semana", post.getNum_semana());
-//            query.setParameter("num_dia_semana", post.getNum_dia_semana());
-//            query.setParameter("hora_inicio", post.getHora_inicio());
-//            query.setParameter("hora_fin", post.getHora_fin());
-//            query.setParameter("horas_normales", post.getHoras_normales());
-//            query.setParameter("horas_nocturnas", post.getHoras_nocturnas());
-//            query.setParameter("horas_dominicales", post.getHoras_dominicales());
-//            query.setParameter("horas_normales_extra", post.getHoras_normales_extra());
-//            query.setParameter("horas_nocturnas_extra", post.getHoras_nocturas_extra());
-//            query.setParameter("horas_dominicales_extra", post.getHoras_dominicales_extra());
-//            query.setParameter("total_horas", post.getTotal_horas());
-//            query.setParameter("id_tecnico", post.getId_tecnico());
-//
-//            return getTotalHorasDeLaSemana(post.getId_tecnico(), post.getNum_semana());
-//        } catch (Exception e) {
-//            throw new Exception("Error ejecutando consulta de post: " + e);
-//        }
-//    }
 
     @Override
     public List getTotalHorasDeLaSemana(String idTecnico, int numSemana) throws Exception {
