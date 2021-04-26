@@ -1,4 +1,4 @@
-package com.example.HandyMan.Service;
+package com.example.HandyMan.service;
 
 import java.util.Date;
 import java.util.List;

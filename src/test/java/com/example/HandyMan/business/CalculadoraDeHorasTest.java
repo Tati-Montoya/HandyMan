@@ -1,6 +1,6 @@
-package com.example.HandyMan.Business;
+package com.example.HandyMan.business;
 
-import com.example.HandyMan.Controller.DateFormatter;
+import com.example.HandyMan.controller.DateFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;

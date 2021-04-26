@@ -1,7 +1,7 @@
-package com.example.HandyMan.Repository;
+package com.example.HandyMan.repository;
 
-import com.example.HandyMan.DTO.PostDataDTO;
-import com.example.HandyMan.DTO.ResponseDataDTO;
+import com.example.HandyMan.dto.PostDataDTO;
+import com.example.HandyMan.dto.ResponseDataDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;

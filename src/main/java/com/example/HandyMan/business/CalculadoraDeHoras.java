@@ -1,6 +1,6 @@
-package com.example.HandyMan.Business;
+package com.example.HandyMan.business;
 
-import com.example.HandyMan.Repository.TecnicoRepositoryIMPL;
+import com.example.HandyMan.repository.TecnicoRepositoryIMPL;
 
 import java.util.Calendar;
 import java.util.Date;

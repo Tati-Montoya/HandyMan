@@ -1,18 +1,15 @@
-package com.example.HandyMan.DTO;
+package com.example.HandyMan.dto;
 
 import org.hibernate.annotations.Immutable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Immutable
-public class PostDataDTO implements Serializable {
-
-    private static final long serialVersionUID = -8832261300645389472L;
+public class PostDataDTO  {
 
     @Id
     @Column(name = "id_servicio")

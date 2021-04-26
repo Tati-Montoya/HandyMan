@@ -1,8 +1,8 @@
-package com.example.HandyMan.Service;
+package com.example.HandyMan.service;
 
-import com.example.HandyMan.Business.CalculadoraDeHoras;
-import com.example.HandyMan.DTO.PostDataDTO;
-import com.example.HandyMan.Repository.ITecnicoRepository;
+import com.example.HandyMan.business.CalculadoraDeHoras;
+import com.example.HandyMan.dto.PostDataDTO;
+import com.example.HandyMan.repository.ITecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

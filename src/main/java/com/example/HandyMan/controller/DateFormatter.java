@@ -1,4 +1,4 @@
-package com.example.HandyMan.Controller;
+package com.example.HandyMan.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,9 +1,9 @@
-package com.example.HandyMan.Controller;
+package com.example.HandyMan.controller;
 
-import com.example.HandyMan.Business.CalculadoraDeHoras;
-import com.example.HandyMan.DTO.RequestDataDTO;
-import com.example.HandyMan.DTO.ResponseDataDTO;
-import com.example.HandyMan.Service.ITecnicoService;
+import com.example.HandyMan.business.CalculadoraDeHoras;
+import com.example.HandyMan.dto.RequestDataDTO;
+import com.example.HandyMan.dto.ResponseDataDTO;
+import com.example.HandyMan.service.ITecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

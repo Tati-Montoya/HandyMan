@@ -1,6 +1,6 @@
-package com.example.HandyMan.Repository;
+package com.example.HandyMan.repository;
 
-import com.example.HandyMan.DTO.PostDataDTO;
+import com.example.HandyMan.dto.PostDataDTO;
 
 import java.util.List;
 
